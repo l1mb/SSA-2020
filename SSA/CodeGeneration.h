@@ -8,6 +8,7 @@ namespace CG
 {
 	class Generator
 	{
+		//KLLL
 	private:
 		LT::LexTable lextable;
 		IT::IdTable idtable;
