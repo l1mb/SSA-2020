@@ -1,0 +1,102 @@
+dec func Sum(dec a, dec b){
+	new dec sum;
+	sum = a + b;
+	ret sum;
+}
+
+dec func Razn(dec a, dec b){
+	new dec sub;
+	sub = a - b;
+	ret sub;
+}
+
+dec func Multi(dec a, dec b){
+	new dec mul;
+	mul = a * b;
+	ret mul;
+}
+
+dec func Division(dec a, dec b){
+	new dec div;
+	div = a / b;
+	ret div;
+}
+
+dec func RemOfDiv(dec a, dec b){
+	new dec remofdiv;
+	remofdiv = a % b;
+	ret remofdiv;
+}
+
+main{
+	new dec a;
+	new dec b;
+	new dec c;
+	new dec d;
+	new dec e;
+	
+	a = (1 + 10) - (10 + 1);
+	b = 10 - 1;
+	c = 10 * 0101;
+	d = 1010 / 10;
+	e = 1010 % 11;
+	
+	console 'Арифметические операции';
+	console a;
+	console b;
+	console c;
+	console d;
+	console e;
+	console 'Арифметические операции';
+
+	new str sa;
+	new str sb;
+	sa = 'Hello, ';
+	sb = 'World!';
+	console 'Операции со строками';
+	console sa;
+	console sb;
+
+	new func Concat(str str1, str str2);
+	new str concatenated;
+	concatenated = Concat(sa, sb);
+	console concatenated;
+	
+	new func Copy(str origin, str destination);
+	Copy(sa, sb);
+	console sb;
+	console 'Операции со строками';
+
+	new dec x;
+	new dec y;
+	x = 1010;
+	y = 0101;
+
+	console 'Работа с функциями';
+	new dec out;
+	out = Sum(x, y);
+	console out;
+
+	out = Razn(x, y);
+	console out;
+
+	out = Multi(x, y);
+	console out;
+
+	out = Division(x, y);
+	console out;
+
+	out = RemOfDiv(x, y);
+	console out;
+	console 'Работа с функциями';
+
+	new dec iterator;
+	iterator = 1010;
+	console 'Начало цикла';
+	while (iterator)[
+		console iterator;
+	];
+	console 'Конец цикла';
+
+	ret 0;
+};
