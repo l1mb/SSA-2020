@@ -4,171 +4,138 @@ includelib libucrt.lib
 includelib kernel32.lib
 includelib ../LP_LIB/Debug/LP_Lib.lib
 ExitProcess PROTO : DWORD
-EXTRN Concat		: PROC
+EXTRN Concat			: PROC
 EXTRN ConvertToChar		: PROC
-EXTRN Copy		: PROC
+EXTRN Copy			: PROC
 EXTRN ConsoleWrite		: PROC
+
+EXTRN Strlen 			: PROC
 
 
 .stack 4096
 .const
-	l0 DWORD 00000001y
-	l1 DWORD 00000010y
-	l2 DWORD 00000101y
-	l3 DWORD 00001010y
-	l4 DWORD 00000011y
-	l5 BYTE 'Арифметические операции', 0
-	l6 BYTE 'Hello, ', 0
-	l7 BYTE 'World!', 0
-	l8 BYTE 'Операции со строками', 0
-	l9 BYTE 'Работа с функциями', 0
-	l10 BYTE 'Начало цикла', 0
-	l11 BYTE 'Конец цикла', 0
-	l12 DWORD 00000000y
+	l0 BYTE 'Арифметические операции', 0
+	l1 DWORD 00001488
+	l2 DWORD 00000001
+	l3 DWORD 00000009
+	l4 DWORD 00800000
+	l5 DWORD 00000012
+	l6 DWORD 00000030
+	l7 DWORD 00000000
+	l8 DWORD 00000002
+	l9 DWORD 00000020
+	l10 DWORD 00000004
+	l11 DWORD 00000007
+	l12 BYTE 'a', 0
+	l13 BYTE 'b', 0
+	l14 BYTE 'c', 0
+	l15 BYTE 'd', 0
+	l16 BYTE 'e', 0
+	l17 BYTE 'Hello, ', 0
+	l18 BYTE 'World!', 0
+	l19 BYTE 'Операции со строками', 0
+	l20 DWORD 00001010
+	l21 DWORD 00000101
+	l22 BYTE 'Работа с функциями', 0
+	l23 BYTE 'Начало цикла', 0
+	l24 BYTE 'Конец цикла', 0
 .data
-	Sumsum			DWORD 0
-	Raznsub			DWORD 0
-	Multimul			DWORD 0
-	Divisiondiv			DWORD 0
-	RemOfDivremofdiv			DWORD 0
-	maina			DWORD 0
-	mainb			DWORD 0
-	mainc			DWORD 0
-	maind			DWORD 0
-	maine			DWORD 0
-	mainsa			DWORD 0
-	mainsb			DWORD 0
-	mainconcatenated			DWORD 0
-	mainx			DWORD 0
-	mainy			DWORD 0
-	mainout			DWORD 0
-	mainiterator			DWORD 0
+	vhodpupa			DWORD 0
+	vhodsuka			DWORD 0
+	vhoda			DWORD 0
+	vhodb			DWORD 0
+	vhodc			DWORD 0
+	vhodd			DWORD 0
+	vhode			DWORD 0
+	vhodsa			DWORD 0
+	vhodsb			DWORD 0
+	vhodconcatenated			DWORD 0
+	vhodx			DWORD 0
+	vhody			DWORD 0
+	vhodout			DWORD 0
+	vhoditerator			DWORD 0
 
 .code
-Sum PROC b: DWORD, a: DWORD
-	push		a
-	push		b
-	;\/Сложение\/
-	pop		eax
-	pop		ebx
-	add		eax, ebx
-	push		eax
-	;/\Сложение/\
-	pop			Sumsum
-
-	mov		eax, Sumsum
-	ret
-Sum ENDP
-
-Razn PROC b: DWORD, a: DWORD
-	push		a
-	push		b
-	;\/Вычитание\/
-	pop		ebx
-	pop		eax
-	sub		eax, ebx
-	push		eax
-	;/\Вычитание/\
-	pop			Raznsub
-
-	mov		eax, Raznsub
-	ret
-Razn ENDP
-
-Multi PROC b: DWORD, a: DWORD
-	push		a
-	push		b
-	;\/Умножение\/
-	pop		eax
-	pop		ebx
-	mul		ebx
-	push		eax
-	;/\Умножение/\
-	pop			Multimul
-
-	mov		eax, Multimul
-	ret
-Multi ENDP
-
-Division PROC b: DWORD, a: DWORD
-	push		a
-	push		b
-	;\/Деление\/
-	pop		ebx
-	mov		edx, 0
-	pop		eax
-	div		ebx
-	push		eax
-	;/\Деление/\
-	pop			Divisiondiv
-
-	mov		eax, Divisiondiv
-	ret
-Division ENDP
-
-RemOfDiv PROC b: DWORD, a: DWORD
-	push		a
-	push		b
-	;\/Остаток от деления\/
-	pop		ebx
-	mov		edx, 0
-	pop		eax
-	div		ebx
-	push		edx
-	;/\Остаток от деления/\
-	pop			RemOfDivremofdiv
-
-	mov		eax, RemOfDivremofdiv
-	ret
-RemOfDiv ENDP
-
 main PROC
-	push		l0
-	push		l1
-	;\/Сложение\/
-	pop		eax
-	pop		ebx
-	add		eax, ebx
+	push		offset l0
+	pop			vhodsuka
+
+	push		vhodsuka
+	call		Strlen
 	push		eax
-	;/\Сложение/\
+	pop			vhodpupa
+
+	push		vhodpupa
 	push		l1
-	push		l0
-	;\/Сложение\/
-	pop		eax
-	pop		ebx
-	add		eax, ebx
-	push		eax
-	;/\Сложение/\
 	;\/Вычитание\/
 	pop		ebx
 	pop		eax
 	sub		eax, ebx
 	push		eax
 	;/\Вычитание/\
-	pop			maina
+	pop			vhoda
 
-	push		l1
-	push		l0
-	;\/Вычитание\/
-	pop		ebx
-	pop		eax
-	sub		eax, ebx
+	push		vhoda
+	call		ConvertToChar
 	push		eax
-	;/\Вычитание/\
-	pop			mainb
+	call		ConsoleWrite
 
-	push		l1
+	push		offset l0
+	pop			vhodsuka
+
 	push		l2
+	push		l3
+	;\/Сложение\/
+	pop		eax
+	pop		ebx
+	add		eax, ebx
+	push		eax
+	;/\Сложение/\
+	push		l4
+	push		l2
+	;\/Сложение\/
+	pop		eax
+	pop		ebx
+	add		eax, ebx
+	push		eax
+	;/\Сложение/\
+	;\/Вычитание\/
+	pop		ebx
+	pop		eax
+	sub		eax, ebx
+	push		eax
+	;/\Вычитание/\
+	pop			vhoda
+
+	push		l5
+	push		l6
+	;\/Вычитание\/
+	pop		ebx
+	pop		eax
+	sub		eax, ebx
+	push		eax
+	;/\Вычитание/\
+	pop			vhodb
+
+	push		l7
+	push		l8
+	push		l8
 	;\/Умножение\/
 	pop		eax
 	pop		ebx
 	mul		ebx
 	push		eax
 	;/\Умножение/\
-	pop			mainc
+	;\/Вычитание\/
+	pop		ebx
+	pop		eax
+	sub		eax, ebx
+	push		eax
+	;/\Вычитание/\
+	pop			vhodc
 
-	push		l3
-	push		l1
+	push		l9
+	push		l10
 	;\/Деление\/
 	pop		ebx
 	mov		edx, 0
@@ -176,10 +143,10 @@ main PROC
 	div		ebx
 	push		eax
 	;/\Деление/\
-	pop			maind
+	pop			vhodd
 
-	push		l3
-	push		l4
+	push		l11
+	push		l8
 	;\/Остаток от деления\/
 	pop		ebx
 	mov		edx, 0
@@ -187,159 +154,115 @@ main PROC
 	div		ebx
 	push		edx
 	;/\Остаток от деления/\
-	pop			maine
+	pop			vhode
 
-	push		offset l5
+	push		offset l12
 	call		ConsoleWrite
 
-	push		maina
+	push		vhoda
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		mainb
+	push		offset l13
+	call		ConsoleWrite
+
+	push		vhodb
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		mainc
+	push		offset l14
+	call		ConsoleWrite
+
+	push		vhodc
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		maind
+	push		offset l15
+	call		ConsoleWrite
+
+	push		vhodd
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		maine
+	push		offset l16
+	call		ConsoleWrite
+
+	push		vhode
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		offset l5
+	push		offset l0
 	call		ConsoleWrite
 
-	push		offset l6
-	pop			mainsa
+	push		offset l17
+	pop			vhodsa
 
-	push		offset l7
-	pop			mainsb
+	push		offset l18
+	pop			vhodsb
 
-	push		offset l8
+	push		offset l19
 	call		ConsoleWrite
 
-	push		mainsa
+	push		vhodsa
 	call		ConsoleWrite
 
-	push		mainsb
+	push		vhodsb
 	call		ConsoleWrite
 
-	push		mainsa
-	push		mainsb
-	call		Concat
-	push		eax
-	pop			mainconcatenated
-
-	push		mainconcatenated
+	push		vhodconcatenated
 	call		ConsoleWrite
 
-	push		offset mainsb
-	push		mainsa
+	push		offset vhodsb
+	push		vhodsa
 	call		Copy
-	push		mainsb
+	push		vhodsb
 	call		ConsoleWrite
 
-	push		offset l8
+	push		offset l19
 	call		ConsoleWrite
 
-	push		l3
-	pop			mainx
+	push		l20
+	pop			vhodx
 
-	push		l2
-	pop			mainy
+	push		l21
+	pop			vhody
 
-	push		offset l9
+	push		offset l22
 	call		ConsoleWrite
 
-	push		mainx
-	push		mainy
-	call		Sum
-	push		eax
-	pop			mainout
-
-	push		mainout
+	push		vhodout
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	push		mainx
-	push		mainy
-	call		Razn
-	push		eax
-	pop			mainout
-
-	push		mainout
-	call		ConvertToChar
-	push		eax
+	push		offset l22
 	call		ConsoleWrite
 
-	push		mainx
-	push		mainy
-	call		Multi
-	push		eax
-	pop			mainout
+	push		l9
+	pop			vhoditerator
 
-	push		mainout
-	call		ConvertToChar
-	push		eax
+	push		offset l23
 	call		ConsoleWrite
 
-	push		mainx
-	push		mainy
-	call		Division
-	push		eax
-	pop			mainout
-
-	push		mainout
-	call		ConvertToChar
-	push		eax
-	call		ConsoleWrite
-
-	push		mainx
-	push		mainy
-	call		RemOfDiv
-	push		eax
-	pop			mainout
-
-	push		mainout
-	call		ConvertToChar
-	push		eax
-	call		ConsoleWrite
-
-	push		offset l9
-	call		ConsoleWrite
-
-	push		l3
-	pop			mainiterator
-
-	push		offset l10
-	call		ConsoleWrite
-
-	.while		mainiterator
+	.while		vhoditerator
 	;\/Тело цикла\/
-	push		mainiterator
+	push		vhoditerator
 	call		ConvertToChar
 	push		eax
 	call		ConsoleWrite
 
-	dec			mainiterator
+	dec			vhoditerator
 	;/\Тело цикла/\
 	.endw
-	push		offset l11
+	push		offset l24
 	call		ConsoleWrite
 
-	push		l12
+	push		l7
 	call		ExitProcess
 main ENDP
 end main

@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "Error.h"
 #include "In.h"
 
@@ -30,14 +30,13 @@ In::IN In::getin(wchar_t infile[], wchar_t outfile[]) {
 
 	inputFile.seekg(std::ios::beg);
 
-	input.text = DBG_NEW unsigned char[fileSize + 1];
+	input.text = DBG_NEW unsigned char[fileSize + 5];
 	int real_size = 0;
 
 	for (int column = 0, readChar = 0; readChar != EOF;) {
 		readChar = inputFile.get();
 		real_size++;
-		if (readChar < 0)
-			break;
+		
 
 		if (input.code[readChar] == IN::Q) {
 			writeNewLexem(input.lexems, temp_lexem, input.lines);
@@ -95,6 +94,8 @@ In::IN In::getin(wchar_t infile[], wchar_t outfile[]) {
 			writeCharToInput(input, input.code[readChar]);
 			temp_lexem += readChar;
 		}
+		if (readChar < 0)
+			break;
 		column++;
 	}
 	input.text[input.size] = '\0';

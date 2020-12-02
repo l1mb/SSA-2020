@@ -27,7 +27,15 @@ extern "C" {
 		return strlen(destination);
 	}
 
-	char* ConvertToChar(unsigned long number) {
+	int Strlen(char* str)
+	{
+		if (str==NULL)
+			return 0;
+		else
+			return strlen(str);
+	}
+
+	char * ConvertToChar(long number) {
 		if (number == 0)
 			return (char*)"0";
 		char* temp = (char*)calloc(255, sizeof(char));
@@ -36,23 +44,32 @@ extern "C" {
 			return NULL;
 		if (buffer == NULL)
 			return NULL;
-
-		int bin = 0, i = 1;
-		while (number) {
-			bin += (number % 2) * i;
-			i *= 10;
-			number /= 2;
+			
+		int bin = number, i = 0;
+		if (number < 0)
+		{
+			unsigned long cumber = number * (-1);
+			bin = cumber;
 		}
-		i = 0;
 		while (bin) {
-			temp[i++] = (bin % 10) + '0';
+				temp[i++] = (bin % 10) + '0';
 			bin /= 10;
 		}
-		temp[i] = '\0';
 
-		for (size_t i = 0, j = strlen(temp) - 1; i < strlen(temp); i++, j--)
-			buffer[i] = temp[j];
-		return buffer;
+		if (number < 0)
+		{
+			buffer[0] = '-';
+			for (size_t i = 1, j = strlen(temp)-1; i <= strlen(temp); i++, j--)
+				buffer[i] = temp[j];
+		} 
+		else
+		{
+			for (size_t i = 0, j = strlen(temp) - 1; i < strlen(temp); i++, j--)
+				buffer[i] = temp[j];
+		}
+
+		buffer[++i] = '\0';
+			return buffer;
 	}
 
 	void ConsoleWrite(const char* buffer) {

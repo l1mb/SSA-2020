@@ -97,7 +97,7 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 	FST fst_arr[] = { FST_INTEGER, FST_MAIN , FST_PRINT , FST_RETURN , FST_DECLARE , FST_STRING , FST_FUNCTION ,
 		FST_LEFT_BRACKET , FST_RIGHT_BRACKET , FST_LEFT_BRACE , FST_RIGHT_BRACE , FST_PLUS , FST_MINUS , FST_MULTI ,
 		FST_DIVISION , FST_COMMA, FST_SEMICOLON, FST_EQUALLY, FST_NUMBERS, FST_LEFTSQUARE, FST_RIGHTSQUARE,
-		FST_PERCENT, FST_CONCAT, FST_COPY, FST_WHILE, FST_HIGHER, FST_LOWER, FST_ID, FST_STRING_LITERAL };
+		FST_PERCENT, FST_CONCAT, FST_COPY, FST_STRLEN, FST_WHILE, FST_HIGHER, FST_LOWER, FST_ID, FST_STRING_LITERAL };
 	int size = sizeof(fst_arr) / sizeof(FST), it_id = -1, currentLiteral = 0;
 	bool param = false, _main = false, libFunc = false;
 #pragma endregion
@@ -106,7 +106,7 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 	for (size_t i = 0; i < lexems.size(); i++) {
 		for (int j = 0; j < size; j++) {
 			if (execute(fst_arr[j], lexems[i].second)) {
-				if (fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY)
+				if (fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY|| fst_arr[j].symbol == LEX_STRLEN)
 					libFunc = true;
 				if (fst_arr[j].symbol == LEX_SEMICOLON)
 					libFunc = false;
@@ -166,13 +166,13 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 				it_id = IT::IsId(idtable, lexems[i].second.c_str(), current_prefix.c_str());
 
 #pragma region "Запись идентификаторов"
-				if (fst_arr[j].symbol == LEX_ID || fst_arr[j].symbol == LEX_COPY || fst_arr[j].symbol == LEX_CONCAT) {
+				if (fst_arr[j].symbol == LEX_ID || fst_arr[j].symbol == LEX_COPY || fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_STRLEN) {
 					if (it_id == TI_NULLIDX)
 						if (lextable.size >= 2 && lextable.table[lextable.size - 2].lexema == LEX_DECLARE &&
 							lextable.table[lextable.size - 1].lexema == LEX_DATATYPE) {
 							IT::Add(idtable, { lextable.size, lexems[i].second.c_str(), current_prefix.c_str(), "", iddatatype, IT::IDTYPE::V, lexems[i].second });
 						}
-						else if ((fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY)
+						else if ((fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY || fst_arr[j].symbol == LEX_STRLEN)
 							&& lextable.table[i - 1].lexema == LEX_FUNCTION && lextable.size >= 1) {
 							IT::Add(idtable, { lextable.size, lexems[i].second.c_str() , "", "", iddatatype, IT::IDTYPE::F, lexems[i].second });
 						}

@@ -28,12 +28,14 @@
 #define LEX_LEFTSQUARE '['
 #define LEX_RIGHTSQUARE ']'
 #define LEX_EQUAL '='
+#define LEX_STRLEN 'n'
 #define LEX_CONCAT 's'
 #define LEX_COPY 'c'
 #define LEX_WHILE 'w'
 #define LEX_LOWER '<'
 #define LEX_HIGHER '>'
 #define LEX_HEADOFFUNC '@'
+
 #pragma endregion
 
 namespace LT {

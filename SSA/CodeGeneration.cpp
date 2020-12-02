@@ -27,13 +27,14 @@ void CG::Generator::Head()
 	out << "includelib kernel32.lib\n";
 	out << "includelib ../LP_LIB/Debug/LP_Lib.lib\n";
 	out << "ExitProcess PROTO : DWORD\n";
-	out << "EXTRN Concat\t\t: PROC\n";
+	out << "EXTRN Concat\t\t\t: PROC\n";
 	out << "EXTRN ConvertToChar\t\t: PROC\n";
-	out << "EXTRN Copy\t\t: PROC\n";
+	out << "EXTRN Copy\t\t\t: PROC\n";
 	out << "EXTRN ConsoleWrite\t\t: PROC\n\n";
+	out << "EXTRN Strlen \t\t\t: PROC\n\n";
 	out << "\n.stack 4096\n";
 }
-
+//! std::setw(8) << std::setfill('0')
 void CG::Generator::Constants()
 {
 	out << ".const\n";
@@ -44,7 +45,7 @@ void CG::Generator::Constants()
 			if (idtable.table[i].iddatatype == IT::IDDATATYPE::STR)
 				out << " BYTE " << idtable.table[i].value.vstr.str << ", 0";
 			if (idtable.table[i].iddatatype == IT::IDDATATYPE::INT)
-				out << " DWORD " << std::setw(8) << std::setfill('0') << idtable.table[i].value.vint << 'y';
+				out << " DWORD " << std::setw(8) << std::setfill('0') << idtable.table[i].value.vint ;
 			out << '\n';
 		}
 }
@@ -174,7 +175,7 @@ void CG::Generator::Code()
 						<< idtable.table[lextable.table[i].idxTI].id << "\n";
 					else
 						out << "\tpush\t\t" << idtable.table[lextable.table[i].idxTI].id << "\n";
-				if (lextable.table[i].lexema == LEX_LITERAL) {
+ 				if (lextable.table[i].lexema == LEX_LITERAL) {
 					if (idtable.table[lextable.table[i].idxTI].iddatatype == IT::IDDATATYPE::INT)
 						out << "\tpush\t\t";
 					else
@@ -267,6 +268,7 @@ void CG::Generator::Code()
 			out << "\tcall\t\tCopy\n";
 			break;
 		}
+
 		case LEX_LEFTSQUARE: {
 			int backup = i;
 			out << "\t.while\t\t";
@@ -281,6 +283,7 @@ void CG::Generator::Code()
 			i = backup;
 			break;
 		}
+		
 		case LEX_RIGHTSQUARE: {
 			out << "\tdec\t\t\t" << whileIterator.scope << whileIterator.id << std::endl;
 			out << "\t;/\\Тело цикла/\\\n";

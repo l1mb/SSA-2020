@@ -123,7 +123,7 @@ void SA::SemanticAnalyzer::Types()
 					&& idtable.table[lextable.table[i].idxTI].iddatatype != datatype) {
 					if (idtable.table[lextable.table[i].idxTI].idtype == IT::IDTYPE::F)
 						throw ERROR_THROW_SEM(705, lextable.table[i].sn);
-					else
+					else if ((idtable.table[lextable.table[i].idxTI].iddatatype == IT::IDDATATYPE::INT) && (datatype == IT::IDDATATYPE::INT))
 						throw ERROR_THROW_SEM(706, lextable.table[i].sn);
 				}
 				else if (lextable.table[i].lexema == LEX_ID

@@ -1,10 +1,10 @@
----- Протокол ------ Дата: 30.11.2020 23:00:13 ------------
+---- Протокол ------ Дата: 01.12.2020 15:45:36 ------------
 ---- Параметры --------
 -log: log.out
 -out: ssa.asm
 -in: In.txt
 ---- Исходные данные ------
-Количество символов: 1280
+Количество символов: 1257
 Проигнорировано: 153
 Количество строк: 101
 -------------------------------------------------------------------------------------
@@ -433,35 +433,35 @@
 17	---->		RemOfDiv - a - INT - PARAMETER - 105 - 0
 18	---->		RemOfDiv - b - INT - PARAMETER - 108 - 0
 19	---->		RemOfDiv - remofdiv - INT - VARIABLE - 113 - 0
-20	---->		 - main - INT - FUNCTION - 125 - 0
-21	---->		main - a - INT - VARIABLE - 129 - 0
-22	---->		main - b - INT - VARIABLE - 133 - 0
-23	---->		main - c - INT - VARIABLE - 137 - 0
-24	---->		main - d - INT - VARIABLE - 141 - 0
-25	---->		main - e - INT - VARIABLE - 145 - 0
+20	---->		 - vhod - INT - FUNCTION - 125 - 0
+21	---->		vhod - a - INT - VARIABLE - 129 - 0
+22	---->		vhod - b - INT - VARIABLE - 133 - 0
+23	---->		vhod - c - INT - VARIABLE - 137 - 0
+24	---->		vhod - d - INT - VARIABLE - 141 - 0
+25	---->		vhod - e - INT - VARIABLE - 145 - 0
 26	---->		l0 - INT - LITERAL - 150 - 1
 27	---->		l1 - INT - LITERAL - 152 - 10
 28	---->		l2 - INT - LITERAL - 171 - 101
 29	---->		l3 - INT - LITERAL - 175 - 1010
 30	---->		l4 - INT - LITERAL - 183 - 11
 31	---->		l5 - STR - LITERAL - 186 - 'Арифметические операции'
-32	---->		main - sa - STR - VARIABLE - 208 - 
-33	---->		main - sb - STR - VARIABLE - 212 - 
+32	---->		vhod - sa - STR - VARIABLE - 208 - 
+33	---->		vhod - sb - STR - VARIABLE - 212 - 
 34	---->		l6 - STR - LITERAL - 216 - 'Hello, '
 35	---->		l7 - STR - LITERAL - 220 - 'World!'
 36	---->		l8 - STR - LITERAL - 223 - 'Операции со строками'
 37	---->		 - Concat - STR - FUNCTION - 233 - 
 38	---->		Concat - str1 - STR - PARAMETER - 236 - 
 39	---->		Concat - str2 - STR - PARAMETER - 239 - 
-40	---->		main - concatenated - STR - VARIABLE - 244 - 
+40	---->		vhod - concatenated - STR - VARIABLE - 244 - 
 41	---->		 - Copy - STR - FUNCTION - 260 - 
 42	---->		Copy - origin - STR - PARAMETER - 263 - 
 43	---->		Copy - destination - STR - PARAMETER - 266 - 
-44	---->		main - x - INT - VARIABLE - 284 - 0
-45	---->		main - y - INT - VARIABLE - 288 - 0
+44	---->		vhod - x - INT - VARIABLE - 284 - 0
+45	---->		vhod - y - INT - VARIABLE - 288 - 0
 46	---->		l9 - STR - LITERAL - 299 - 'Работа с функциями'
-47	---->		main - out - INT - VARIABLE - 303 - 0
-48	---->		main - iterator - INT - VARIABLE - 370 - 0
+47	---->		vhod - out - INT - VARIABLE - 303 - 0
+48	---->		vhod - iterator - INT - VARIABLE - 370 - 0
 49	---->		l10 - STR - LITERAL - 377 - 'Начало цикла'
 50	---->		l11 - STR - LITERAL - 390 - 'Конец цикла'
 51	---->		l12 - INT - LITERAL - 393 - 0

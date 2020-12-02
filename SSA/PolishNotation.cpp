@@ -41,8 +41,10 @@ int PN::get_priority(char lexem) {
 void PN::fix_lextable(LT::LexTable& lextable, const std::string& str, size_t length, size_t pos, const std::vector<int>& ids) {
 	for (size_t i = 0, q = 0; i < str.size(); i++) {
 		lextable.table[pos + i].lexema = str[i];
-		if (lextable.table[pos + i].lexema == LEX_ID || lextable.table[pos + i].lexema == LEX_LITERAL
-			|| lextable.table[pos + i].lexema == LEX_CONCAT || lextable.table[pos + i].lexema == LEX_COPY) {
+		if (lextable.table[pos + i].lexema == LEX_ID	 || lextable.table[pos + i].lexema == LEX_LITERAL
+		 || lextable.table[pos + i].lexema == LEX_CONCAT || lextable.table[pos + i].lexema == LEX_COPY 
+		 || lextable.table[pos + i].lexema == LEX_STRLEN) 
+		{
 			lextable.table[pos + i].idxTI = ids[q];
 			q++;
 		}
@@ -129,7 +131,7 @@ bool PN::Convertation(int lextable_pos, LT::LexTable& lextable, IT::IdTable& idt
 			PN::fix_lextable(lextable, PolishString, iterator, lextable_pos, ids);
 			break;
 		}
-		else if (lexem == LEX_ID || lexem == LEX_LITERAL || lexem == LEX_CONCAT || lexem == LEX_COPY) {
+		else if (lexem == LEX_ID || lexem == LEX_LITERAL || lexem == LEX_CONCAT || lexem == LEX_COPY|| lexem == LEX_STRLEN) {
 			if (std::find(stack.c.begin(), stack.c.begin(), LEX_HEADOFFUNC) != stack.c.end())
 				params_counter++;
 			PolishString += lexem;

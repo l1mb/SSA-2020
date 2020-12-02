@@ -8,51 +8,60 @@
 
 #pragma region functions
 #define FST_MAIN FST(5, LEX_MAIN,\
-	NODE(1, RELATION('m', 1)),\
-	NODE(1, RELATION('a', 2)),\
-	NODE(1, RELATION('i', 3)),\
+	NODE(1, RELATION('v', 1)),\
+	NODE(1, RELATION('h', 2)),\
+	NODE(1, RELATION('o', 3)),\
+	NODE(1, RELATION('d', 4)),\
+	NODE())
+
+#define FST_PRINT FST(7, LEX_PRINT,\
+	NODE(1, RELATION('p', 1)),\
+	NODE(1, RELATION('e', 2)),\
+	NODE(1, RELATION('c', 3)),\
+	NODE(1, RELATION('h', 4)),\
+	NODE(1, RELATION('a', 5)),\
+	NODE(1, RELATION('t', 6)),\
+	NODE())
+
+#define FST_RETURN FST(6, LEX_RETURN,\
+	NODE(1, RELATION('v', 1)),\
+	NODE(1, RELATION('e', 2)),\
+	NODE(1, RELATION('r', 3)),\
 	NODE(1, RELATION('n', 4)),\
+	NODE(1, RELATION('i', 5)),\
 	NODE())
 
-#define FST_PRINT FST(8, LEX_PRINT,\
-	NODE(1, RELATION('c', 1)),\
-	NODE(1, RELATION('o', 2)),\
-	NODE(1, RELATION('n', 3)),\
-	NODE(1, RELATION('s', 4)),\
-	NODE(1, RELATION('o', 5)),\
-	NODE(1, RELATION('l', 6)),\
-	NODE(1, RELATION('e', 7)),\
-	NODE())
-
-#define FST_RETURN FST(4, LEX_RETURN,\
-	NODE(1, RELATION('r', 1)),\
-	NODE(1, RELATION('e', 2)),\
-	NODE(1, RELATION('t', 3)),\
-	NODE())
-
-#define FST_DECLARE FST(4, LEX_DECLARE,\
-	NODE(1, RELATION('n', 1)),\
-	NODE(1, RELATION('e', 2)),\
-	NODE(1, RELATION('w', 3)),\
+#define FST_DECLARE FST(8, LEX_DECLARE,\
+	NODE(1, RELATION('z', 1)),\
+	NODE(1, RELATION('a', 2)),\
+	NODE(1, RELATION('p', 3)),\
+	NODE(1, RELATION('o', 4)),\
+	NODE(1, RELATION('m', 5)),\
+	NODE(1, RELATION('n', 6)),\
+	NODE(1, RELATION('i', 7)),\
 	NODE())
 
 #define FST_INTEGER FST(4, LEX_INTEGER,\
-	NODE(1, RELATION('d', 1)),\
-	NODE(1, RELATION('e', 2)),\
-	NODE(1, RELATION('c', 3)),\
+	NODE(1, RELATION('i', 1)),\
+	NODE(1, RELATION('n', 2)),\
+	NODE(1, RELATION('t', 3)),\
 	NODE())
 
-#define FST_STRING FST(4, LEX_STRING,\
+#define FST_STRING FST(7, LEX_STRING,\
 	NODE(1, RELATION('s', 1)),\
 	NODE(1, RELATION('t', 2)),\
 	NODE(1, RELATION('r', 3)),\
+	NODE(1, RELATION('i', 4)),\
+	NODE(1, RELATION('n', 5)),\
+	NODE(1, RELATION('g', 6)),\
 	NODE())
 
-#define FST_FUNCTION FST(5, LEX_FUNCTION,\
-	NODE(1, RELATION('f', 1)),\
-	NODE(1, RELATION('u', 2)),\
-	NODE(1, RELATION('n', 3)),\
-	NODE(1, RELATION('c', 4)),\
+#define FST_FUNCTION FST(6, LEX_FUNCTION,\
+	NODE(1, RELATION('p', 1)),\
+	NODE(1, RELATION('h', 2)),\
+	NODE(1, RELATION('o', 3)),\
+	NODE(1, RELATION('n', 4)),\
+	NODE(1, RELATION('k', 5)),\
 	NODE())
 
 #define FST_CONCAT FST(7, LEX_CONCAT,\
@@ -71,12 +80,20 @@
 	NODE(1, RELATION('y', 4)),\
 	NODE())
 
-#define FST_WHILE FST(6, LEX_WHILE,\
-	NODE(1, RELATION('w', 1)),\
-	NODE(1, RELATION('h', 2)),\
-	NODE(1, RELATION('i', 3)),\
+#define FST_STRLEN FST(7, LEX_STRLEN,\
+	NODE(1, RELATION('S', 1)),\
+	NODE(1, RELATION('t', 2)),\
+	NODE(1, RELATION('r', 3)),\
 	NODE(1, RELATION('l', 4)),\
 	NODE(1, RELATION('e', 5)),\
+	NODE(1, RELATION('n', 6)),\
+	NODE())
+
+#define FST_WHILE FST(5, LEX_WHILE,\
+	NODE(1, RELATION('c', 1)),\
+	NODE(1, RELATION('i', 2)),\
+	NODE(1, RELATION('k', 3)),\
+	NODE(1, RELATION('l', 4)),\
 	NODE())
 #pragma endregion
 
@@ -152,8 +169,18 @@
 #pragma endregion
 
 #pragma region LITERALS
-#define FST_NUMBERS FST(1, LEX_LITERAL,\
-	NODE(2, RELATION('0', 0), RELATION('1', 0)),\
+#define FST_NUMBERS FST(2, LEX_LITERAL,\
+	NODE(20, \
+	 RELATION('0', 0), RELATION('0', 1),\
+	 RELATION('1', 0), RELATION('1', 1),\
+	 RELATION('2', 0), RELATION('2', 1),\
+	 RELATION('3', 0), RELATION('3', 1),\
+	 RELATION('4', 0), RELATION('4', 1),\
+	 RELATION('5', 0), RELATION('5', 1),\
+	 RELATION('6', 0), RELATION('6', 1),\
+	 RELATION('7', 0), RELATION('7', 1),\
+	 RELATION('8', 0), RELATION('8', 1),\
+	 RELATION('9', 0), RELATION('9', 1)),\
 	NODE()\
 )
 
@@ -369,8 +396,8 @@ NODE())
 #pragma endregion
 
 #pragma region DATA_TYPES
-#define INTEGER "dec"
-#define STRING "str"
+#define INTEGER "int"
+#define STRING "string"
 #pragma endregion
 
 namespace FST {
