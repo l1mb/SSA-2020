@@ -1,7 +1,8 @@
 #include "pch.h"
 
 extern "C" {
-	char* Concat(char* str2, char* str1) {
+	char* _stdcall Concat(char* str2, char* str1)
+	{
 		if (str1 == NULL || str2 == NULL)
 			return (char*)"NULL";
 		char* out = (char*)calloc(255, sizeof(char));
@@ -15,7 +16,8 @@ extern "C" {
 		return out;
 	}
 
-	int Copy(char* origin, char*& destination) {
+	int _stdcall Copy(char* origin, char*& destination)
+	{
 		if (origin == NULL)
 			return NULL;
 		destination = (char*)calloc(255, sizeof(char));
@@ -27,7 +29,7 @@ extern "C" {
 		return strlen(destination);
 	}
 
-	int Strlen(char* str)
+	int _stdcall Strlen(char* str)
 	{
 		if (str==NULL)
 			return 0;
@@ -35,7 +37,8 @@ extern "C" {
 			return strlen(str);
 	}
 
-	char * ConvertToChar(long number) {
+	char * _stdcall ConvertToChar(long number)
+	{
 		if (number == 0)
 			return (char*)"0";
 		char* temp = (char*)calloc(255, sizeof(char));
@@ -72,7 +75,8 @@ extern "C" {
 			return buffer;
 	}
 
-	void ConsoleWrite(const char* buffer) {
+	void _stdcall ConsoleWrite(const char* buffer)
+	{
 		setlocale(0, "");
 		if (buffer == NULL) {
 			std::cout << "NULL\n";

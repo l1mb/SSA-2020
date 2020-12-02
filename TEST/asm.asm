@@ -4,12 +4,13 @@ includelib libucrt.lib
 includelib kernel32.lib
 includelib ../LP_LIB/Debug/LP_Lib.lib
 ExitProcess PROTO : DWORD
-EXTRN Concat			: PROC
-EXTRN ConvertToChar		: PROC
-EXTRN Copy			: PROC
-EXTRN ConsoleWrite		: PROC
 
-EXTRN Strlen 			: PROC
+Concat PROTO : DWORD, :DWORD
+Copy PROTO : DWORD, : DWORD
+ ConvertToChar PROTO : DWORD
+ConsoleWrite	PROTO 	: DWORD
+
+Strlen 		PROTO 	: DWORD
 
 
 .stack 4096
@@ -35,11 +36,16 @@ EXTRN Strlen 			: PROC
 	l18 BYTE 'World!', 0
 	l19 BYTE 'Операции со строками', 0
 	l20 DWORD 00001010
-	l21 DWORD 00000101
+	l21 DWORD 00000100
 	l22 BYTE 'Работа с функциями', 0
 	l23 BYTE 'Начало цикла', 0
 	l24 BYTE 'Конец цикла', 0
 .data
+	Sumsum			DWORD 0
+	Raznsub			DWORD 0
+	Multimul			DWORD 0
+	Divisiondiv			DWORD 0
+	RemOfDivremofdiv			DWORD 0
 	vhodpupa			DWORD 0
 	vhodsuka			DWORD 0
 	vhoda			DWORD 0
@@ -56,6 +62,83 @@ EXTRN Strlen 			: PROC
 	vhoditerator			DWORD 0
 
 .code
+Sum PROC b: DWORD, a: DWORD
+	push		a
+	push		b
+	;\/Сложение\/
+	pop		eax
+	pop		ebx
+	add		eax, ebx
+	push		eax
+	;/\Сложение/\
+	pop			Sumsum
+
+	mov		eax, Sumsum
+	ret
+Sum ENDP
+
+Razn PROC b: DWORD, a: DWORD
+	push		a
+	push		b
+	;\/Вычитание\/
+	pop		ebx
+	pop		eax
+	sub		eax, ebx
+	push		eax
+	;/\Вычитание/\
+	pop			Raznsub
+
+	mov		eax, Raznsub
+	ret
+Razn ENDP
+
+Multi PROC b: DWORD, a: DWORD
+	push		a
+	push		b
+	;\/Умножение\/
+	pop		eax
+	pop		ebx
+	mul		ebx
+	push		eax
+	;/\Умножение/\
+	pop			Multimul
+
+	mov		eax, Multimul
+	ret
+Multi ENDP
+
+Division PROC b: DWORD, a: DWORD
+	push		a
+	push		b
+	;\/Деление\/
+	pop		ebx
+	mov		edx, 0
+	pop		eax
+	div		ebx
+	push		eax
+	;/\Деление/\
+	pop			Divisiondiv
+
+	mov		eax, Divisiondiv
+	ret
+Division ENDP
+
+RemOfDiv PROC b: DWORD, a: DWORD
+	push		a
+	push		b
+	;\/Остаток от деления\/
+	pop		ebx
+	mov		edx, 0
+	pop		eax
+	div		ebx
+	push		edx
+	;/\Остаток от деления/\
+	pop			RemOfDivremofdiv
+
+	mov		eax, RemOfDivremofdiv
+	ret
+RemOfDiv ENDP
+
 main PROC
 	push		offset l0
 	pop			vhodsuka
@@ -234,6 +317,56 @@ main PROC
 
 	push		offset l22
 	call		ConsoleWrite
+
+	push		vhodx
+	push		vhody
+	call		Sum
+	push		eax
+	pop			vhodout
+
+	push		vhodout
+	call		ConvertToChar
+	push		eax
+	call		ConsoleWrite
+
+	push		vhodx
+	push		vhody
+	call		Razn
+	push		eax
+	pop			vhodout
+
+	push		vhodout
+	call		ConvertToChar
+	push		eax
+	call		ConsoleWrite
+
+	push		vhodx
+	push		vhody
+	call		Multi
+	push		eax
+	pop			vhodout
+
+	push		vhodout
+	call		ConvertToChar
+	push		eax
+	call		ConsoleWrite
+
+	push		vhodx
+	push		vhody
+	call		Division
+	push		eax
+	pop			vhodout
+
+	push		vhodout
+	call		ConvertToChar
+	push		eax
+	call		ConsoleWrite
+
+	push		vhodx
+	push		vhody
+	call		RemOfDiv
+	push		eax
+	pop			vhodout
 
 	push		vhodout
 	call		ConvertToChar

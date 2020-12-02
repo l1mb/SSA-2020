@@ -172,9 +172,14 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 							lextable.table[lextable.size - 1].lexema == LEX_DATATYPE) {
 							IT::Add(idtable, { lextable.size, lexems[i].second.c_str(), current_prefix.c_str(), "", iddatatype, IT::IDTYPE::V, lexems[i].second });
 						}
-						else if ((fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY || fst_arr[j].symbol == LEX_STRLEN)
-							&& lextable.table[i - 1].lexema == LEX_FUNCTION && lextable.size >= 1) {
-							IT::Add(idtable, { lextable.size, lexems[i].second.c_str() , "", "", iddatatype, IT::IDTYPE::F, lexems[i].second });
+						else if (fst_arr[j].symbol == LEX_CONCAT && (lextable.table[i - 1].lexema == LEX_FUNCTION && lextable.size >= 1)) {
+							IT::Add(idtable, { lextable.size, lexems[i].second.c_str() , "", "", IT::IDDATATYPE::STR, IT::IDTYPE::F, lexems[i].second });
+						}
+						else if (fst_arr[j].symbol == LEX_COPY && (lextable.table[i - 1].lexema == LEX_FUNCTION && lextable.size >= 1)) {
+							IT::Add(idtable, { lextable.size, lexems[i].second.c_str() , "", "", IT::IDDATATYPE::STR, IT::IDTYPE::F, lexems[i].second });
+						}
+						else if (fst_arr[j].symbol == LEX_STRLEN && (lextable.table[i - 1].lexema == LEX_FUNCTION && lextable.size >= 1)) {
+							IT::Add(idtable, { lextable.size, lexems[i].second.c_str() , "", "", IT::IDDATATYPE::INT, IT::IDTYPE::F, lexems[i].second });
 						}
 						else if (lextable.size >= 1 && lextable.table[lextable.size - 1].lexema == LEX_FUNCTION) {
 							IT::Add(idtable, { lextable.size, lexems[i].second.c_str(), temp_prefix.c_str(), "", iddatatype, IT::IDTYPE::F, lexems[i].second });

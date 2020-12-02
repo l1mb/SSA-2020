@@ -16,27 +16,27 @@ void writeNewLexem(std::vector<std::pair<int, std::string>>& lexems, std::string
 	lexem.clear();
 }
 
-In::IN In::getin(wchar_t infile[], wchar_t outfile[]) {
+In::IN In::getin(wchar_t infile[]) {
 	std::ifstream inputFile(infile, std::ifstream::ate);
-	std::ofstream outputFile(outfile);
 	size_t fileSize = (size_t)inputFile.tellg();
 	IN input;
 	std::string temp_lexem;
 	if (!inputFile.is_open())
 		throw ERROR_THROW(110);
 
-	if (!outputFile.is_open())
-		throw ERROR_THROW(110);
-
 	inputFile.seekg(std::ios::beg);
 
-	input.text = DBG_NEW unsigned char[fileSize + 5];
+	input.text = DBG_NEW unsigned char[fileSize + 1488];
 	int real_size = 0;
 
 	for (int column = 0, readChar = 0; readChar != EOF;) {
 		readChar = inputFile.get();
 		real_size++;
-		
+
+		if (readChar < 0) {
+			writeNewLexem(input.lexems, temp_lexem, input.lines);
+			break;
+		}
 
 		if (input.code[readChar] == IN::Q) {
 			writeNewLexem(input.lexems, temp_lexem, input.lines);
@@ -94,16 +94,12 @@ In::IN In::getin(wchar_t infile[], wchar_t outfile[]) {
 			writeCharToInput(input, input.code[readChar]);
 			temp_lexem += readChar;
 		}
-		if (readChar < 0)
-			break;
 		column++;
 	}
 	input.text[input.size] = '\0';
 	input.size = real_size - 1;
 
 	inputFile.close();
-	outputFile << input.text;
-	outputFile.close();
 	return input;
 }
 

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Text Include="In.txt" />
     <Text Include="Log.txt" />
+    <Text Include="tits.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ssa.asm" />

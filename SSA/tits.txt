@@ -8,8 +8,7 @@ int phonk Razn(int a, int b){
 	zapomni int sub;
 	sub = a - b;
 	verni sub;
-} 
-
+}
 
 int phonk Multi(int a, int b){
 	zapomni int mul;
@@ -30,27 +29,18 @@ int phonk RemOfDiv(int a, int b){
 }
 
 vhod{
-	zapomni phonk Strlen(string tvar);
+	zapomni int phonk Strlen(string tvar);
 	zapomni int pupa;
 	zapomni string suka;
 	suka = 'Арифметические операции';
 	pupa = Strlen(suka);
 	zapomni int a;
 	a = pupa - 1488;
-
 	pechat a;
 	zapomni int b;
-	b = a-2;
-	pechat b;
 	zapomni int c;
-	c = b;
-
 	zapomni int d;
 	zapomni int e;
-	d =c;
-	e=d;
-	pechat e;
-
 	suka = 'Арифметические операции';
 	a = (1 + 9) - (800000 + 1);
 	b = 12 - 30;
@@ -71,7 +61,6 @@ vhod{
 
 	zapomni string sa;
 	zapomni string sb;
-
 	sa = 'Hello, ';
 	sb = 'World!';
 	pechat 'Операции со строками';

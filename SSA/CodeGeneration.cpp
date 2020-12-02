@@ -27,11 +27,11 @@ void CG::Generator::Head()
 	out << "includelib kernel32.lib\n";
 	out << "includelib ../LP_LIB/Debug/LP_Lib.lib\n";
 	out << "ExitProcess PROTO : DWORD\n";
-	out << "EXTRN Concat\t\t\t: PROC\n";
-	out << "EXTRN ConvertToChar\t\t: PROC\n";
-	out << "EXTRN Copy\t\t\t: PROC\n";
-	out << "EXTRN ConsoleWrite\t\t: PROC\n\n";
-	out << "EXTRN Strlen \t\t\t: PROC\n\n";
+	out << "Concat\t\t\t\tPROTO:\tDWORD\n";
+	out << "ConvertToChar\t\tPROTO:\tDWORD\n";
+	out << "Copy\t\t\t\tPROTO:\tDWORD\n";
+	out << "ConsoleWrite\t\tPROTO:\tDWORD\n";
+	out << "Strlen \t\t\t\tPROTO:\tDWORD\n\n";
 	out << "\n.stack 4096\n";
 }
 //! std::setw(8) << std::setfill('0')
@@ -43,9 +43,9 @@ void CG::Generator::Constants()
 		{
 			out << "\t" << idtable.table[i].literalID;
 			if (idtable.table[i].iddatatype == IT::IDDATATYPE::STR)
-				out << " BYTE " << idtable.table[i].value.vstr.str << ", 0";
+				out << "\tBYTE\t" << idtable.table[i].value.vstr.str << ", 0";
 			if (idtable.table[i].iddatatype == IT::IDDATATYPE::INT)
-				out << " DWORD " << std::setw(8) << std::setfill('0') << idtable.table[i].value.vint ;
+				out << "\tDWORD\t" << std::setw(8) << std::setfill('0') << idtable.table[i].value.vint ;
 			out << '\n';
 		}
 }

@@ -41,5 +41,5 @@ namespace In {
 		IN(const IN& other);
 		~IN();
 	};
-	IN getin(wchar_t infile[], wchar_t outfile[]);
+	IN getin(wchar_t infile[]);
 }

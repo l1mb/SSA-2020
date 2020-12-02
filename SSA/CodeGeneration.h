@@ -8,7 +8,6 @@ namespace CG
 {
 	class Generator
 	{
-		
 	private:
 		LT::LexTable lextable;
 		IT::IdTable idtable;
@@ -17,6 +16,7 @@ namespace CG
 		void Constants();
 		void Data();
 		void Code();
+		void PrintComment(int position, const LT::LexTable& lextable);
 
 	public:
 		Generator(LT::LexTable lexT, IT::IdTable idT, wchar_t out[PARM_MAX_SIZE]);

@@ -36,7 +36,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		log = Log::getlog(parm.log);
 		Log::WriteLog(log);
 		Log::WriteParm(log, parm);
-		In::IN in = In::getin(parm.in, parm.out);
+		In::IN in = In::getin(parm.in);
 		Log::WriteIn(log, in);
 		LT::LexTable lextable = LT::Create((int)in.lexems.size());
 		IT::IdTable idtable = IT::Create((int)in.lexems.size());
@@ -47,6 +47,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 		/*+-+-+-+-+-+-+-+- Синтаксический анализ +-+-+-+-+-+-+-+-*/
 		MFST::Mfst mfst(lextable, GRB::getGreibach());
+		
 		if (!mfst.start(log))
 			exit(0);
 		MFST::Mfst::clearGreibach(mfst);
@@ -61,7 +62,6 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		/*+-+-+-+-+-+-+-+- Генерация кода +-+-+-+-+-+-+-+-*/
 		CG::Generator CodeBuilder = CG::Generator(lextable, idtable, parm.out);
 		CodeBuilder.Start(log);
-
 		if (parm.lex) {
 			*log.stream << "+-+-+-+-+-+-+-+- Таблица лексем +-+-+-+-+-+-+-+-\n";
 			for (int i = 0; i < lextable.size; i++) {

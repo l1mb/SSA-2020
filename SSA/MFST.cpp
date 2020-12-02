@@ -89,7 +89,7 @@ namespace MFST
 			nrulechain = state.nrulechain;
 			storestate.pop();
 			//MFST_TRACE5("RESSTATE")
-			//MFST_TRACE2
+				//MFST_TRACE2
 		};
 		return rc;
 	};
@@ -125,9 +125,9 @@ namespace MFST
 			*log.stream << getDiagnosis(1) << std::endl;
 			*log.stream << getDiagnosis(2) << std::endl;*/
 			break;
-			//case Mfst::RC_STEP::NS_NORULECHAIN:       MFST_TRACE4("------>NS_NORULECHAIN") break;
-			//case Mfst::RC_STEP::NS_ERROR:             MFST_TRACE4("------>NS_ERROR") break;
-			//case Mfst::RC_STEP::SURPRISE:             MFST_TRACE4("------>SURPRISE") break;
+		case Mfst::RC_STEP::NS_NORULECHAIN:       /*MFST_TRACE4("------>NS_NORULECHAIN")*/ break;
+		case Mfst::RC_STEP::NS_ERROR:             /*MFST_TRACE4("------>NS_ERROR")*/ break;
+		case Mfst::RC_STEP::SURPRISE:             /*MFST_TRACE4("------>SURPRISE")*/ break;
 		};
 		return rc;
 	};
