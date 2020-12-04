@@ -50,9 +50,10 @@
     <ClInclude Include="SemanticAnalyzer.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="FullDungeonMaster.txt" />
     <Text Include="In.txt" />
     <Text Include="Log.txt" />
-    <Text Include="tits.txt" />
+    <Text Include="ti.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ssa.asm" />

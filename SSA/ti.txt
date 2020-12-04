@@ -4,25 +4,14 @@ int phonk Sum(int a, int b){
 	verni sum;
 }
 
-int phonk Razn(int a, int b){
+int phonk Sub(int a, int b){
 	zapomni int sub;
 	sub = a - b;
 	verni sub;
 }
 
-int phonk Multi(int a, int b){
-	zapomni int mul;
-	mul = a * b;
-	verni mul;
-}
 
-int phonk Division(int a, int b){
-	zapomni int div;
-	div = a / b;
-	verni div;
-}
-
-int phonk RemOfDiv(int a, int b){
+int phonk BadDiv(int a, int b){
 	zapomni int remofdiv;
 	remofdiv = a % b;
 	verni remofdiv;
@@ -88,16 +77,12 @@ vhod{
 	out = Sum(x, y);
 	pechat out;
 
-	out = Razn(x, y);
+	out = Sub(x, y);
 	pechat out;
 
-	out = Multi(x, y);
-	pechat out;
 
-	out = Division(x, y);
-	pechat out;
 
-	out = RemOfDiv(x, y);
+	out = BadDiv(x, y);
 	pechat out;
 
 	pechat 'Работа с функциями';

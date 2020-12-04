@@ -4,121 +4,49 @@ int phonk Sum(int a, int b){
 	verni sum;
 }
 
-int phonk Razn(int a, int b){
-	zapomni int sub;
-	sub = a - b;
-	verni sub;
-} 
-
-
-int phonk Multi(int a, int b){
-	zapomni int mul;
-	mul = a * b;
-	verni mul;
-}
-
-int phonk Division(int a, int b){
-	zapomni int div;
-	div = a / b;
-	verni div;
-}
-
-int phonk RemOfDiv(int a, int b){
-	zapomni int remofdiv;
-	remofdiv = a % b;
-	verni remofdiv;
-}
-
 vhod{
-	zapomni phonk Strlen(string tvar);
-	zapomni int pupa;
-	zapomni string suka;
-	suka = 'Арифметические операции';
-	pupa = Strlen(suka);
 	zapomni int a;
-	a = pupa - 1488;
-
-	pechat a;
 	zapomni int b;
-	b = a-2;
-	pechat b;
 	zapomni int c;
-	c = b;
+	zapomni phonk Strlen(string str1);
+	zapomni int out;
 
-	zapomni int d;
-	zapomni int e;
-	d =c;
-	e=d;
-	pechat e;
-
-	suka = 'Арифметические операции';
-	a = (1 + 9) - (800000 + 1);
-	b = 12 - 30;
-	c = 0-2*2;
-	d = 20/4;
-	e = 7 % 2;
-	pechat 'a';
+	a = 4 * 3;
+	b = 7 / 2;
+	c = 8 % 3;
+	out = Sum(b, c);
+	
 	pechat a;
-	pechat 'b';
 	pechat b;
-	pechat 'c';
 	pechat c;
-	pechat 'd';
-	pechat d;
-	pechat 'e';
-	pechat e;
-	pechat 'Арифметические операции';
+	pechat out;
 
 	zapomni string sa;
 	zapomni string sb;
-
 	sa = 'Hello, ';
 	sb = 'World!';
-	pechat 'Операции со строками';
-	pechat sa;
-	pechat sb;
+	out = Strlen(sa);
 
 	
+	pechat out;
+
+
+	zapomni phonk Concat(string str1, string str2);
+	zapomni phonk Copy(string str1, string str2);
 	zapomni string concatenated;
-	
+	concatenated = Concat(sa, sb);
 	pechat concatenated;
 	
-	zapomni phonk Copy(string origin, string destination);
 	Copy(sa, sb);
 	pechat sb;
-	pechat 'Операции со строками';
-
-	zapomni int x;
-	zapomni int y;
-	x = 1010;
-	y = 0100;
-
-	pechat 'Работа с функциями';
-
-	zapomni int out;
-	out = Sum(x, y);
-	pechat out;
-
-	out = Razn(x, y);
-	pechat out;
-
-	out = Multi(x, y);
-	pechat out;
-
-	out = Division(x, y);
-	pechat out;
-
-	out = RemOfDiv(x, y);
-	pechat out;
-
-	pechat 'Работа с функциями';
 
 
 	zapomni int iterator;
-	iterator = 20;
-	pechat 'Начало цикла';
-	cikl (iterator)[pechat iterator;];
-	pechat 'Конец цикла';
+	iterator = 7;
+
+	cikl (iterator)[
+		pechat iterator;
+	];
 
 	verni 0;
 }

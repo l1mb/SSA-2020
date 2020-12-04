@@ -44,24 +44,6 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 		/*+-+-+-+-+-+-+-+- Лексический анализ +-+-+-+-+-+-+-+-*/
 		FST::Recognize(in.lexems, log.stream, lextable, idtable);
-
-		/*+-+-+-+-+-+-+-+- Синтаксический анализ +-+-+-+-+-+-+-+-*/
-		MFST::Mfst mfst(lextable, GRB::getGreibach());
-		
-		if (!mfst.start(log))
-			exit(0);
-		MFST::Mfst::clearGreibach(mfst);
-
-		/*+-+-+-+-+-+-+-+- Семантический анализ +-+-+-+-+-+-+-+-*/
-		SA::SemanticAnalyzer SAnalyzer = SA::SemanticAnalyzer(lextable, idtable);
-		SAnalyzer.Start(log);
-
-		/*+-+-+-+-+-+-+-+- Польская запись +-+-+-+-+-+-+-+-*/
-		PN::PolishNotation(lextable, idtable);
-
-		/*+-+-+-+-+-+-+-+- Генерация кода +-+-+-+-+-+-+-+-*/
-		CG::Generator CodeBuilder = CG::Generator(lextable, idtable, parm.out);
-		CodeBuilder.Start(log);
 		if (parm.lex) {
 			*log.stream << "+-+-+-+-+-+-+-+- Таблица лексем +-+-+-+-+-+-+-+-\n";
 			for (int i = 0; i < lextable.size; i++) {
@@ -97,6 +79,25 @@ int _tmain(int argc, _TCHAR* argv[]) {
 			}
 			*log.stream << "+-+-+-+-+-+-+-+- Таблица идентификаторов +-+-+-+-+-+-+-+-\n";
 		}
+		/*+-+-+-+-+-+-+-+- Синтаксический анализ +-+-+-+-+-+-+-+-*/
+		MFST::Mfst mfst(lextable, GRB::getGreibach());
+		
+		if (!mfst.start(log))
+			exit(0);
+		mfst.printrules(log);
+		MFST::Mfst::clearGreibach(mfst);
+
+		/*+-+-+-+-+-+-+-+- Семантический анализ +-+-+-+-+-+-+-+-*/
+		/*SA::SemanticAnalyzer SAnalyzer = SA::SemanticAnalyzer(lextable, idtable);
+		SAnalyzer.Start(log);*/	
+
+		/*+-+-+-+-+-+-+-+- Польская запись +-+-+-+-+-+-+-+-*/
+		PN::PolishNotation(lextable, idtable);
+
+		/*+-+-+-+-+-+-+-+- Генерация кода +-+-+-+-+-+-+-+-*/
+		CG::Generator CodeBuilder = CG::Generator(lextable, idtable, parm.out);
+		CodeBuilder.Start(log);
+		
 
 		LT::Delete(lextable);
 		IT::Delete(idtable);

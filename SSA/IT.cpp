@@ -130,3 +130,4 @@ IT::Entry::Entry(int idxfirstLE, const char* id, const char* scope, const char* 
 		}
 	}
 }
+

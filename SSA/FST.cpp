@@ -100,13 +100,16 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 		FST_PERCENT, FST_CONCAT, FST_COPY, FST_STRLEN, FST_WHILE, FST_HIGHER, FST_LOWER, FST_ID, FST_STRING_LITERAL };
 	int size = sizeof(fst_arr) / sizeof(FST), it_id = -1, currentLiteral = 0;
 	bool param = false, _main = false, libFunc = false;
+
+
+	
 #pragma endregion
 
 #pragma region "Разбор лексем"
 	for (size_t i = 0; i < lexems.size(); i++) {
 		for (int j = 0; j < size; j++) {
 			if (execute(fst_arr[j], lexems[i].second)) {
-				if (fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY|| fst_arr[j].symbol == LEX_STRLEN)
+				if (fst_arr[j].symbol == LEX_CONCAT || fst_arr[j].symbol == LEX_COPY || fst_arr[j].symbol == LEX_STRLEN)
 					libFunc = true;
 				if (fst_arr[j].symbol == LEX_SEMICOLON)
 					libFunc = false;
@@ -114,7 +117,9 @@ void FST::Recognize(std::vector<std::pair<int, std::string>> lexems, std::ostrea
 					throw ERROR_THROW(126);
 #pragma region "Определение префикса"
 				if (fst_arr[j].symbol == LEX_MAIN && !current_prefix.empty())
+				{
 					throw ERROR_THROW(124);
+				}
 				if (fst_arr[j].symbol == LEX_FUNCTION || fst_arr[j].symbol == LEX_MAIN) {
 					if (current_prefix.empty())
 						if (fst_arr[j].symbol == LEX_MAIN) {

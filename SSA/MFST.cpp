@@ -168,7 +168,7 @@ namespace MFST
 		for (unsigned short k = 0; k < storestate.size(); k++) {
 			state = storestate.c[k];
 			rule = grebach.getRule(state.nrule);
-			//MFST_TRACE7
+			MFST_TRACE7
 		};
 	}
 	void Mfst::clearGreibach(Mfst& mfst)

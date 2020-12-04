@@ -106,7 +106,10 @@
     <Text Include="In.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="tits.txt">
+    <Text Include="FullDungeonMaster.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="ti.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
