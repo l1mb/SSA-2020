@@ -19,12 +19,12 @@ int phonk BadDiv(int a, int b){
 
 vhod{
 	zapomni int phonk Strlen(string tvar);
-	zapomni int pupa;
-	zapomni string suka;
-	suka = 'Арифметические операции';
-	pupa = Strlen(suka);
+	zapomni int pu;
+	zapomni string su;
+	su = 'Арифметические операции';	
+	pu = Strlen(su);
 	zapomni int a;
-	a = pupa - 1488;
+	a = pupa - 14;
 	pechat a;
 	zapomni int b;
 	zapomni int c;
