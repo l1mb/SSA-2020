@@ -10,43 +10,26 @@ vhod{
 	zapomni int c;
 	zapomni phonk Strlen(string str1);
 	zapomni int out;
-
 	a = 4 * 3;
 	b = 7 / 2;
 	c = 8 % 3;
 	out = Sum(b, c);
-	
 	pechat a;
 	pechat b;
 	pechat c;
 	pechat out;
-
 	zapomni string sa;
 	zapomni string sb;
-	sa = 'Hello, ';
-	sb = 'World!';
+	sa = 'Test String';
 	out = Strlen(sa);
-
-	
 	pechat out;
-
-
-	zapomni phonk Concat(string str1, string str2);
 	zapomni phonk Copy(string str1, string str2);
-	zapomni string concatenated;
-	concatenated = Concat(sa, sb);
-	pechat concatenated;
-	
 	Copy(sa, sb);
 	pechat sb;
-
-
 	zapomni int iterator;
 	iterator = 7;
-
 	cikl (iterator)[
 		pechat iterator;
 	];
-
 	verni 0;
 }

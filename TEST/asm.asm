@@ -5,8 +5,8 @@ includelib kernel32.lib
 includelib ../LP_LIB/Debug/LP_Lib.lib
 ExitProcess PROTO : DWORD
 Concat				PROTO:	DWORD,:	DWORD
-ConvertToChar		PROTO:	DWORD
 Copy				PROTO:	DWORD,:	DWORD
+ConvertToChar		PROTO:	DWORD
 ConsoleWrite		PROTO:	DWORD
 Strlen 				PROTO:	DWORD
 
@@ -18,9 +18,8 @@ Strlen 				PROTO:	DWORD
 	l2	DWORD	00000007
 	l3	DWORD	00000002
 	l4	DWORD	00000008
-	l5	BYTE	'Hello, ', 0
-	l6	BYTE	'World!', 0
-	l7	DWORD	00000000
+	l5	BYTE	'Test string', 0
+	l6	DWORD	00000000
 .data
 	Sumsum			DWORD 0
 	vhoda			DWORD 0
@@ -29,7 +28,6 @@ Strlen 				PROTO:	DWORD
 	vhodout			DWORD 0
 	vhodsa			DWORD 0
 	vhodsb			DWORD 0
-	vhodconcatenated			DWORD 0
 	vhoditerator			DWORD 0
 
 .code
@@ -110,9 +108,6 @@ main PROC
 	push		offset l5
 	pop			vhodsa
 
-	push		offset l6
-	pop			vhodsb
-
 	push		vhodsa
 	call		Strlen
 	push		eax
@@ -121,15 +116,6 @@ main PROC
 	push		vhodout
 	call		ConvertToChar
 	push		eax
-	call		ConsoleWrite
-
-	push		vhodsa
-	push		vhodsb
-	call		Concat
-	push		eax
-	pop			vhodconcatenated
-
-	push		vhodconcatenated
 	call		ConsoleWrite
 
 	push		offset vhodsb
@@ -151,7 +137,7 @@ main PROC
 	dec			vhoditerator
 	;/\Тело цикла/\
 	.endw
-	push		l7
+	push		l6
 	call		ExitProcess
 main ENDP
 end main

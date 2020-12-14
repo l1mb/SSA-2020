@@ -81,7 +81,6 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		}
 		/*+-+-+-+-+-+-+-+- Синтаксический анализ +-+-+-+-+-+-+-+-*/
 		MFST::Mfst mfst(lextable, GRB::getGreibach());
-		
 		if (!mfst.start(log))
 			exit(0);
 		mfst.printrules(log);

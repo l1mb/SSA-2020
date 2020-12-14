@@ -28,8 +28,8 @@ void CG::Generator::Head()
 	out << "includelib ../LP_LIB/Debug/LP_Lib.lib\n";
 	out << "ExitProcess PROTO : DWORD\n";
 	out << "Concat\t\t\t\tPROTO:\tDWORD,:\tDWORD\n";
-	out << "ConvertToChar\t\tPROTO:\tDWORD\n";
 	out << "Copy\t\t\t\tPROTO:\tDWORD,:\tDWORD\n";
+	out << "ConvertToChar\t\tPROTO:\tDWORD\n";
 	out << "ConsoleWrite\t\tPROTO:\tDWORD\n";
 	out << "Strlen \t\t\t\tPROTO:\tDWORD\n\n";
 	out << "\n.stack 4096\n";

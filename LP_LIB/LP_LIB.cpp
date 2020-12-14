@@ -31,13 +31,13 @@ extern "C" {
 
 	int _stdcall Strlen(char* str)
 	{
-		if (str==NULL)
+		if (str == NULL)
 			return 0;
 		else
 			return strlen(str);
 	}
 
-	char * _stdcall ConvertToChar(long number)
+	char* _stdcall ConvertToChar(long number)
 	{
 		if (number == 0)
 			return (char*)"0";
@@ -47,7 +47,7 @@ extern "C" {
 			return NULL;
 		if (buffer == NULL)
 			return NULL;
-			
+
 		int bin = number, i = 0;
 		if (number < 0)
 		{
@@ -55,16 +55,16 @@ extern "C" {
 			bin = cumber;
 		}
 		while (bin) {
-				temp[i++] = (bin % 10) + '0';
+			temp[i++] = (bin % 10) + '0';
 			bin /= 10;
 		}
 
 		if (number < 0)
 		{
 			buffer[0] = '-';
-			for (size_t i = 1, j = strlen(temp)-1; i <= strlen(temp); i++, j--)
+			for (size_t i = 1, j = strlen(temp) - 1; i <= strlen(temp); i++, j--)
 				buffer[i] = temp[j];
-		} 
+		}
 		else
 		{
 			for (size_t i = 0, j = strlen(temp) - 1; i < strlen(temp); i++, j--)
@@ -72,7 +72,7 @@ extern "C" {
 		}
 
 		buffer[++i] = '\0';
-			return buffer;
+		return buffer;
 	}
 
 	void _stdcall ConsoleWrite(const char* buffer)
